@@ -1,5 +1,6 @@
 
-with open('lists.txt', 'r') as file:
+
+with open('day1input.txt', 'r') as file:
     lines = file.readlines()
 
 left_column: list[int] = []
@@ -18,17 +19,6 @@ for line in lines:
 left_column.sort()
 right_column.sort()
 
-sum = 0
-
-for num in left_column:
-    appearances = 0
-    for n in right_column:
-        if num == n:
-            appearances += 1
-
-    sum += (num * appearances)
-
-print(sum)
-
-
-
+differences = [abs(l-r)for l,r in zip(left_column,right_column)]
+difference = sum(differences)
+print(f"Difference: {difference}")
